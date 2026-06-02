@@ -41,8 +41,9 @@ test-results/
 playwright-report/
 playwright/.cache/
 
-# Documentation files
+# Documentation files (allow root README)
 *.md
+!README.md
 
 # SQL migration scripts
 *.sql
