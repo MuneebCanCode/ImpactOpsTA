@@ -347,7 +347,6 @@ Property-based tests use [fast-check](https://github.com/dubzzz/fast-check) to v
 
 ### What I'd do with another day
 
-- **End-to-end tests** — Add Playwright tests covering the full sign-up → create org → invite → accept flow. The happy-path E2E suite would catch integration regressions that unit tests can't.
 - **Pagination** — The organization directory and members list currently load all rows. Adding cursor-based pagination to both would make the app production-ready for large datasets.
 - **Real email delivery** — The Edge Function has an email integration point but it isn't wired to a provider (Resend/SendGrid). With another day I'd complete that integration so invitations actually arrive in inboxes.
 - **Organization editing and deletion** — Admins can create organizations but not rename or remove them. Full CRUD would be the next logical step.
