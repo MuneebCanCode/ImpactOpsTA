@@ -167,6 +167,16 @@ All migrations live in `supabase/migrations/` and are applied in order via `supa
 
 ### Recreate schema on a fresh project
 
+A single consolidated script — `supabase/DbSetup.sql` — combines all 9 migrations into one idempotent file. Run it once and the entire schema, RLS policies, triggers, and helper functions are created.
+
+**Option A — Supabase SQL Editor (easiest, no CLI needed):**
+
+1. Open your Supabase project → **SQL Editor**
+2. Copy the contents of `supabase/DbSetup.sql`
+3. Paste and click **Run**
+
+**Option B — Supabase CLI:**
+
 ```bash
 # 1. Install Supabase CLI
 npm install -g supabase
@@ -175,8 +185,8 @@ npm install -g supabase
 npx supabase login
 npx supabase link --project-ref YOUR_PROJECT_REF
 
-# 3. Push all 9 migrations in order
-npx supabase db push
+# 3. Run the single consolidated schema script
+psql "$DATABASE_URL" -f supabase/DbSetup.sql
 
 # 4. Deploy the Edge Function
 npx supabase functions deploy invite-member
@@ -189,7 +199,11 @@ npx supabase secrets set SERVICE_ROLE_KEY=YOUR_SERVICE_ROLE_KEY
 #    This speeds up testing by skipping the confirmation email step.
 ```
 
+> The individual numbered migration files (`0001` – `0009`) are also in `supabase/migrations/` for reference and version history.
+
 ### Migration breakdown
+
+> All of the below are consolidated into `supabase/DbSetup.sql` — you only need to run that one file.
 
 | File | Purpose |
 |---|---|
