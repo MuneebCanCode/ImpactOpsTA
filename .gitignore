@@ -46,7 +46,7 @@ playwright/.cache/
 !README.md
 
 # SQL migration scripts
-*.sql
+# *.sql   <-- migrations are committed for schema reproducibility
 
 # App settings
 appsettings.json
@@ -54,3 +54,4 @@ appsettings.*.json
 
 # Kiro spec/steering files
 .kiro/
+.vercel
