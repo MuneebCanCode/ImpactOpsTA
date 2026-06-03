@@ -114,7 +114,7 @@ function MembershipCard({ membership }: { membership: MemberWithOrg }) {
   return (
     <div className="rounded-lg border border-border bg-card shadow-sm">
       {/* Card header: org name + type badge */}
-      <div className="border-b border-border px-6 py-4">
+      <div className="border-b border-border px-4 py-4 sm:px-6">
         <div className="flex flex-wrap items-center gap-2">
           <h2 className="text-lg font-semibold leading-tight">{org.name}</h2>
           <OrgTypeBadge type={org.type} />
@@ -170,13 +170,13 @@ function DetailRow({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex items-start gap-3 px-6 py-3">
+    <div className="flex items-start gap-3 px-4 py-3 sm:px-6">
       <span className="mt-0.5 text-muted-foreground">{icon}</span>
       <div className="min-w-0 flex-1">
         <dt className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
           {label}
         </dt>
-        <dd className="mt-0.5 text-sm text-foreground">{children}</dd>
+        <dd className="mt-0.5 break-all text-sm text-foreground">{children}</dd>
       </div>
     </div>
   );

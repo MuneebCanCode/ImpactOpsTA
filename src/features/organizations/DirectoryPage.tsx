@@ -57,7 +57,7 @@ export function DirectoryPage() {
 
   return (
     <div className="space-y-6">
-      <header className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+      <header className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="space-y-1">
           <h1 className="text-2xl font-semibold tracking-tight">
             Organizations
@@ -67,8 +67,10 @@ export function DirectoryPage() {
           </p>
         </div>
 
-        {/* Create-org entry point in the page header (Req 5). */}
-        <CreateOrgDialog />
+        {/* Full-width on mobile, auto-width on sm+ */}
+        <div className="sm:shrink-0">
+          <CreateOrgDialog />
+        </div>
       </header>
 
       <DirectoryFilters value={filters} onChange={setFilters} />
@@ -118,19 +120,21 @@ function OrganizationRow({ organization, onSelect }: OrganizationRowProps) {
       onClick={onSelect}
       data-testid="organization-row"
       className={cn(
-        "group flex w-full items-center gap-4 rounded-lg border border-border bg-card p-4 text-left shadow-sm transition-colors",
+        "group flex w-full items-center gap-3 rounded-lg border border-border bg-card p-4 text-left shadow-sm transition-colors",
         "hover:bg-accent hover:text-accent-foreground",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
       )}
     >
       <div className="min-w-0 flex-1 space-y-1">
-        <div className="flex items-center gap-2">
+        {/* Name + badge — badge wraps below on very narrow screens */}
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
           <span className="truncate font-medium">{organization.name}</span>
           <OrgTypeBadge type={organization.type} />
         </div>
-        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+        {/* Meta row — wraps on mobile rather than overflowing */}
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-0.5 text-sm text-muted-foreground">
           <span className="inline-flex items-center gap-1">
-            <Users className="h-3.5 w-3.5" aria-hidden="true" />
+            <Users className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
             {formatMemberCount(organization.memberCount)}
           </span>
           <span>Created {formatCreatedAt(organization.created_at)}</span>

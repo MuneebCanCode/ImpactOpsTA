@@ -89,9 +89,14 @@ function MemberRow({ member }: { member: OrganizationMember }) {
           className="h-4 w-4 shrink-0 text-muted-foreground"
           aria-hidden="true"
         />
-        <span className="truncate text-sm font-medium">{member.email}</span>
+        {/* min-w-0 ensures the flex child can shrink below its content size
+            so long emails truncate rather than pushing the badge off-screen */}
+        <span className="min-w-0 truncate text-sm font-medium">{member.email}</span>
       </div>
-      <MemberStatusBadge status={member.status} />
+      {/* shrink-0 keeps the badge fully visible regardless of email length */}
+      <div className="shrink-0">
+        <MemberStatusBadge status={member.status} />
+      </div>
     </li>
   );
 }

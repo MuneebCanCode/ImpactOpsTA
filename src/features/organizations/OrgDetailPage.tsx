@@ -67,7 +67,7 @@ export function OrgDetailPage() {
 
             <section
               aria-labelledby="members-heading"
-              className="grid gap-6 lg:grid-cols-[1fr_20rem]"
+              className="grid gap-6 lg:grid-cols-[1fr_22rem]"
             >
               <div className="space-y-3">
                 <h2
@@ -76,12 +76,10 @@ export function OrgDetailPage() {
                 >
                   Members
                 </h2>
-                {/* MembersList wraps its own useMembers read in QueryState,
-                    so its loading / error / empty states reuse the same
-                    State_Pattern (Requirements 8.1, 8.3, 12.4). */}
                 <MembersList orgId={organization.id} />
               </div>
 
+              {/* Invite form — full width on mobile, sidebar on large screens */}
               <aside className="space-y-3">
                 <h2 className="text-lg font-semibold tracking-tight">
                   Invite a member

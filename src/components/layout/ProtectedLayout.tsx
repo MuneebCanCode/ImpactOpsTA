@@ -87,13 +87,18 @@ export function AppChrome({ user, profile, children }: AppChromeProps) {
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       <header className="border-b border-border">
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-3">
-          <span className="text-base font-semibold">Impact Operations TA</span>
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-2 px-4 py-3">
+          {/* App name — stays on one line on all screen sizes */}
+          <span className="shrink-0 text-sm font-semibold sm:text-base">
+            Impact Operations TA
+          </span>
 
-          <div className="flex items-center gap-3">
+          <div className="flex min-w-0 items-center gap-2">
+            {/* Identity — truncates gracefully; hidden on very small screens
+                to keep the nav from overflowing */}
             <span
               data-testid="identity-display"
-              className="max-w-[16rem] truncate text-sm text-muted-foreground"
+              className="hidden min-w-0 max-w-[10rem] truncate text-sm text-muted-foreground sm:block sm:max-w-[16rem]"
               title={identity}
             >
               {identity}
@@ -164,14 +169,16 @@ function SignOutButton() {
       aria-label="Sign out"
       className={cn(
         "inline-flex h-9 items-center justify-center gap-2 rounded-md border border-input",
-        "bg-background px-3 text-sm font-medium text-foreground shadow-sm transition-colors",
+        "bg-background px-2 sm:px-3 text-sm font-medium text-foreground shadow-sm transition-colors",
         "hover:bg-accent hover:text-accent-foreground",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         "disabled:pointer-events-none disabled:opacity-50",
       )}
     >
-      <LogOut className="h-4 w-4" aria-hidden="true" />
-      <span>{isSigningOut ? "Signing out…" : "Sign out"}</span>
+      <LogOut className="h-4 w-4 shrink-0" aria-hidden="true" />
+      <span className="hidden sm:inline">
+        {isSigningOut ? "Signing out…" : "Sign out"}
+      </span>
     </button>
   );
 }
