@@ -11,7 +11,7 @@ A full-stack web application for managing organizations and their members. Admin
 | Environment | URL |
 |---|---|
 | Production (`main`) | https://impact-ops-ta.vercel.app |
-| Preview (`development`) | https://impact-ops-ta-git-development-muhammad-muneebs-projects-2d740be9.vercel.app |
+| Preview (`development`) | https://impact-ops-gjefzcuoz-muhammad-muneebs-projects-2d740be9.vercel.app |
 
 ### Demo Credentials
 
